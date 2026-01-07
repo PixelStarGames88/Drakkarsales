@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -23,13 +24,15 @@ public partial class MainWindow : Window
     }
     private void EnterToAccontCreate_Click(object sender, MouseButtonEventArgs e)
     {
-        GridForEnter.Visibility = Visibility.Hidden;
         GridForAcciuntCreating.Visibility = Visibility.Visible;
+        GridForEnter.Visibility = Visibility.Hidden;
+        GridForBooking.Visibility = Visibility.Hidden;
     }
     private void EnterToEnter_Click(object sender, MouseButtonEventArgs e)
     {
         GridForEnter.Visibility = Visibility.Visible;
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
+        GridForBooking.Visibility = Visibility.Hidden;
     }
     private void EnterLabelCreateAccount_MouseEnter(object sender, MouseEventArgs e)
     {
@@ -74,5 +77,130 @@ public partial class MainWindow : Window
     private void EnterLabelEnter_MouseLeave(object sender, MouseEventArgs e)
     {
         EnterLabelEnter.Foreground = Brushes.Black;
+    }
+
+    private void EnterToBooking(object sender, MouseButtonEventArgs e)
+    {
+        GridForBooking.Visibility = Visibility.Visible;
+        GridForAcciuntCreating.Visibility = Visibility.Hidden;
+        GridForEnter.Visibility = Visibility.Hidden;
+    }
+
+    private void GridExitToEnterBooking_MouseEnter(object sender, MouseEventArgs e)
+    {
+        ExitLabelBooking.Foreground = Brushes.Red;
+    }
+
+    private void GridExitToEnterBooking_MouseLeave(object sender, MouseEventArgs e)
+    {
+        ExitLabelBooking.Foreground = Brushes.Black;
+    }
+
+    private void EnterLabelBooking_MouseEnter(object sender, MouseEventArgs e)
+    {
+        EnterLabelBooking.Foreground = Brushes.Red;
+    }
+
+    private void EnterLabelBooking_MouseLeave(object sender, MouseEventArgs e)
+    {
+        EnterLabelBooking.Foreground = Brushes.Black;
+    }
+
+    private void EoforvikLabel_MouseEnter(object sender, MouseEventArgs e)
+    {
+        EoforvikLabel.Foreground = Brushes.Red;
+    }
+
+    private void EoforvikLabel_MouseLeave(object sender, MouseEventArgs e)
+    {
+        EoforvikLabel.Foreground = Brushes.Black;
+    }
+
+    private void LondonLabel_MouseEnter(object sender, MouseEventArgs e)
+    {
+        LondonLabel.Foreground = Brushes.Red;
+    }
+    private void LondonLabel_MouseLeave(object sender, MouseEventArgs e)
+    {
+        LondonLabel.Foreground = Brushes.Black;
+    }
+    private void AhenLabel_MouseEnter(object sender, MouseEventArgs e)
+    {
+        AhenLabel.Foreground = Brushes.Red;
+    }
+    private void AhenLabel_MouseLeave(object sender, MouseEventArgs e)
+    {
+        AhenLabel.Foreground = Brushes.Black;
+    }
+    private void RomeLabel_MouseEnter(object sender, MouseEventArgs e)
+    {
+        RomeLabel.Foreground = Brushes.Red;
+    }
+    private void RomeLabel_MouseLeave(object sender, MouseEventArgs e)
+    {
+        RomeLabel.Foreground = Brushes.Black;
+    }
+
+    private void ConstantinopleLabel_MouseEnter(object sender, MouseEventArgs e)
+    {
+        ConstantinopleLabel.Foreground = Brushes.Red;
+    }
+
+    private void ConstantinopleLabel_MouseLeave(object sender, MouseEventArgs e)
+    {
+        ConstantinopleLabel.Foreground = Brushes.Black;
+    }
+
+    private void DamascusLabel_MouseEnter(object sender, MouseEventArgs e)
+    {
+        DamascusLabel.Foreground = Brushes.Red;
+    }
+
+    private void DamascusLabel_MouseLeave(object sender, MouseEventArgs e)
+    {
+        DamascusLabel.Foreground = Brushes.Black;
+    }
+
+    private void GridEditAccountBooking_MouseEnter(object sender, MouseEventArgs e)
+    {
+        EditAccountLabelBooking.Foreground = Brushes.Red;
+    }
+
+    private void GridEditAccountBooking_MouseLeave(object sender, MouseEventArgs e)
+    {
+        EditAccountLabelBooking.Foreground = Brushes.Black;
+    }
+
+    private void FillTextBox_Click(object sender, MouseButtonEventArgs e)
+    {
+        if(e.Source is Label sourceLabel)
+        {
+            if (WhereFromTextBoxBooking.IsFocused)
+            {
+                WhereFromTextBoxBooking.Text = sourceLabel.Content.ToString()?.Substring(1, sourceLabel.Content.ToString().Length - 2);
+            }
+            else if (WhereToTextBoxBooking.IsFocused)
+            {
+                WhereToTextBoxBooking.Text = sourceLabel.Content.ToString()?.Substring(1, sourceLabel.Content.ToString().Length - 2);
+            }
+        }
+       
+    }
+
+    private void GridHelpBooking_MouseEnter(object sender, MouseEventArgs e)
+    {
+        HelpLabelBooking.Foreground = Brushes.Red;
+    }
+    private void GridHelpBooking_MouseLeave(object sender, MouseEventArgs e)
+    {
+        HelpLabelBooking.Foreground = Brushes.Black;
+    }
+
+    private void ClearField_IsVisibleChange(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        if (sender is TextBox sourceLabel)
+        {
+            sourceLabel.Clear();
+        }
     }
 }
