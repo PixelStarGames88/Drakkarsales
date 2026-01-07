@@ -1,0 +1,85 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Player"
+        xmlns:Accessibility="clr-namespace:Accessibility;assembly=Accessibility" x:Class="Player.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="536" Width="932" Background="Black" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True">
+    <Grid x:Name="MainGrid">
+        <Grid x:Name="GridForAcciuntCreating" Visibility="Hidden">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Background.png"/>
+            </Grid.Background>
+            <Rectangle x:Name="PaperPanelCreateAccount" HorizontalAlignment="Center" Height="310" VerticalAlignment="Top" Width="752" Margin="0,135,0,0" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Old Paper.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBox x:Name="LoginTextBoxCreateAccount" HorizontalAlignment="Left" Margin="502,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="EnterLoginLabelCreateAccount" Content="Enter Login" Margin="502,200,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
+            <TextBox x:Name="PasswordTextBoxCreateAccount" HorizontalAlignment="Left" Margin="502,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="EnterPasswordLabelCreateAccount" Content="Enter Password" Margin="502,259,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
+            <Label x:Name="EnterLabelCreateAccount" Content="Enter" Margin="208,333,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="100" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelCreateAccount_MouseEnter" MouseLeave="EnterLabelCreateAccount_MouseLeave"/>
+            <TextBox x:Name="RepeatTextBoxCreateAccount" HorizontalAlignment="Left" Margin="502,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="RepeatPasswordLabelCreateAccount" Content="Repeat Password" Margin="502,313,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
+            <TextBox x:Name="FrstNameTextBoxCreateAccount" HorizontalAlignment="Left" Margin="208,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="EnterFirstNameLabelCreateAccount" Content="Enter First Name" Margin="208,200,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
+            <TextBox x:Name="LastNameTextBoxCreateAccount" HorizontalAlignment="Left" Margin="208,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="EnterLastNameLabelCreateAccount" Content="Enter Last Name" Margin="208,258,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
+            <Label x:Name="ExitLabelCreateAccount" Content="Exit" Margin="363,333,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="73" Background="{x:Null}" FontWeight="Medium" MouseDown="EnterToEnter_Click" MouseEnter="ExitLabelCreateAccount_MouseEnter" MouseLeave="ExitLabelCreateAccount_MouseLeave"/>
+            <Label x:Name="TitleLabelCreateAccount" Content="Drakkarsales" Margin="0,84,0,0" VerticalAlignment="Top" Height="51" FontFamily="Viking-Normal" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="GridForEnter">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Background.png"/>
+            </Grid.Background>
+            <Label x:Name="TitleLabelEnter" Content="Drakkarsales" Margin="0,84,0,0" VerticalAlignment="Top" Height="51" FontFamily="Viking-Normal" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
+            <Rectangle x:Name="PaperPanelEnter" HorizontalAlignment="Center" Height="272" VerticalAlignment="Top" Width="590" Margin="0,142,0,0">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Old Paper.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBox x:Name="LoginTextBoxEnter" HorizontalAlignment="Center" Margin="0,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="EnterLoginLabelEnter" Content="Enter Login" Margin="0,190,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="228" Background="{x:Null}"/>
+            <TextBox x:Name="PasswordTextBoxEnter" HorizontalAlignment="Center" Margin="0,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}"/>
+            <Label x:Name="EnterPasswordLabelEnter" Content="Enter Password" Margin="0,249,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="228" Background="{x:Null}"/>
+            <Label x:Name="EnterLabelEnter" Content="Enter" Margin="0,317,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Center" Width="100" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelEnter_MouseEnter" MouseLeave="EnterLabelEnter_MouseLeave"/>
+            <Label x:Name="NewAccountLabelEnter" Content="New Account" Margin="0,356,0,0" VerticalAlignment="Top" Height="26" FontFamily="Viking-Normal" Foreground="Black" HorizontalAlignment="Center" Width="156" Background="{x:Null}" FontWeight="Medium" FontSize="14" MouseDown="EnterToAccontCreate_Click" MouseEnter="NewAccountLabelEnter_MouseEnter" MouseLeave="NewAccountLabelEnter_MouseLeave"/>
+        </Grid>
+        <Rectangle x:Name="UpPanel" Stroke="Black" Margin="0,-1,0,486" Height="51" MouseDown="MoveWindow_MousePeess">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Panel.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="DownPanel" Stroke="Black" Margin="0,485,0,0" Height="51">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Panel.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="TitleSign" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" MouseDown="MoveWindow_MousePeess">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Sun Cross Sign.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="ClosePanel" HorizontalAlignment="Left" Height="50" Margin="863,-1,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="3.711,0.555" MouseDown="ExitApplication_Click">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Shield.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="HideWindowPanel" HorizontalAlignment="Left" Height="50" Margin="782,-1,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="3.711,0.555" MouseDown="HideWindow_Click">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Hide Window Shield.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Grid>
+</Window>

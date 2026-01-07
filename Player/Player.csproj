@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Background.png" />
+    <None Remove="Full Screen Shield.png" />
+    <None Remove="Hide Window Shield.png" />
+    <None Remove="Old Map.png" />
+    <None Remove="Old Paper.png" />
+    <None Remove="Panel.png" />
+    <None Remove="Shield.png" />
+    <None Remove="Sun Cross Sign.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Background.png" />
+    <Resource Include="Hide Window Shield.png" />
+    <Resource Include="Old Paper.png" />
+    <Resource Include="Panel.png" />
+    <Resource Include="Shield.png" />
+    <Resource Include="Sun Cross Sign.png" />
+  </ItemGroup>
+
+</Project>

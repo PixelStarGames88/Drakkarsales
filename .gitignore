@@ -1,0 +1,17 @@
+[Bb]in/
+[Oo]bj/
+
+.suo
+*.user
+*.config.user
+*.resharper
+*.bak
+*.cache
+*.vs/
+*.vsp
+*.vspx
+*.log
+
+**/*.db
+app.db
+.vs
