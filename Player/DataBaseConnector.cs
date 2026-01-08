@@ -7,30 +7,57 @@ namespace Player;
 public class DataBaseConnector
 {
     string connectionString;
+    UserObject user;
+    public UserObject User
+    {
+        get 
+        { 
+           return user;
+        } 
+    }
     public DataBaseConnector()
     {
+        user = new UserObject("", "", "", "");
         var builder = new ConfigurationBuilder().
                           SetBasePath(Directory.GetCurrentDirectory()).
-                          AddJsonFile("C:\\Users\\Ivar\\Desktop\\Склад\\Programming\\C#\\Player\\Player\\appsettings.json", optional: false, reloadOnChange: true);
-
+                          AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
         IConfiguration configurate = builder.Build();
 
         connectionString = configurate.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException();
     }
-    public bool ConnectionToDataBase()
+    private NpgsqlConnection GetConnection()
     {
-        using (var conn = new NpgsqlConnection(connectionString))
+        var conn = new NpgsqlConnection(connectionString);
+
+        conn.Open();
+        return conn;
+    }
+    public bool DataIsCorrect(string login, string password)
+    {
+        try
         {
-            try
+            using (var conn = GetConnection())
             {
-                conn.Open();
-                return true;
-            }
-            catch 
-            { 
-                return false;
+                string request = "SELECT * FROM program_user WHERE user_login = @login AND user_password = @password";
+                using(var cmd = new NpgsqlCommand(request, conn))
+                {
+                    cmd.Parameters.AddWithValue("login", login.ToUpper());
+                    cmd.Parameters.AddWithValue("password", password.ToUpper());
+
+                    using var reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        user = new UserObject(reader.GetString(0), reader.GetString(2), reader.GetString(1).Split(' ')[1], reader.GetString(1).Split(' ')[0]);
+                        return true;
+                    }
+                    return false;
+                }
             }
         }
+        catch 
+        { 
+           return false;
+        }
     }
-
 }

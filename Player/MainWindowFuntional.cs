@@ -10,7 +10,5 @@ public partial class MainWindow : Window
     private void AddFunctional()
     {
         dbConnector = new DataBaseConnector();
-        dbConnector.ConnectionToDataBase();
     }
-
 }

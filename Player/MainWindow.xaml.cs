@@ -10,7 +10,7 @@ namespace Player;
 /// </summary>
 public partial class MainWindow : Window
 {
-    DataBaseConnector dbConnector;
+    private DataBaseConnector dbConnector;
 
     public MainWindow()
     {
@@ -37,6 +37,10 @@ public partial class MainWindow : Window
     }
     private void EnterToBooking_Click(object sender, MouseButtonEventArgs e)
     {
+        if (!dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Text) && GridForEnter.Visibility == Visibility.Visible)
+        {
+            return;
+        }
         GridForBooking.Visibility = Visibility.Visible;
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
@@ -48,6 +52,11 @@ public partial class MainWindow : Window
         GridForAcciuntEdit.Visibility = Visibility.Visible;
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
         GridForEnter.Visibility = Visibility.Hidden;
+
+        LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
+        PasswordTextBoxAccountEdit.Text = dbConnector.User.Password;
+        LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
+        FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
     }
 
 
