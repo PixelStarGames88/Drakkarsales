@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Accelergreat.EntityFramework.PostgreSql" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Arrow Shield.png" />
     <Resource Include="Background.png" />
     <Resource Include="Hide Window Shield.png" />
