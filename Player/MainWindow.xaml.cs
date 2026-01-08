@@ -26,6 +26,7 @@ public partial class MainWindow : Window
     {
         GridForAcciuntCreating.Visibility = Visibility.Visible;
         GridForEnter.Visibility = Visibility.Hidden;
+        GridForAcciuntEdit.Visibility = Visibility.Hidden;
         GridForBooking.Visibility = Visibility.Hidden;
     }
     private void EnterToEnter_Click(object sender, MouseButtonEventArgs e)
@@ -33,6 +34,21 @@ public partial class MainWindow : Window
         GridForEnter.Visibility = Visibility.Visible;
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
         GridForBooking.Visibility = Visibility.Hidden;
+        GridForAcciuntEdit.Visibility = Visibility.Hidden;
+    }
+    private void EnterToBooking_Click(object sender, MouseButtonEventArgs e)
+    {
+        GridForBooking.Visibility = Visibility.Visible;
+        GridForAcciuntEdit.Visibility = Visibility.Hidden;
+        GridForAcciuntCreating.Visibility = Visibility.Hidden;
+        GridForEnter.Visibility = Visibility.Hidden;
+    }
+    private void EnterToAccountEdit_Click(object sender, MouseButtonEventArgs e)
+    {
+        GridForBooking.Visibility = Visibility.Hidden;
+        GridForAcciuntEdit.Visibility = Visibility.Visible;
+        GridForAcciuntCreating.Visibility = Visibility.Hidden;
+        GridForEnter.Visibility = Visibility.Hidden;
     }
     private void EnterLabelCreateAccount_MouseEnter(object sender, MouseEventArgs e)
     {
@@ -79,12 +95,7 @@ public partial class MainWindow : Window
         EnterLabelEnter.Foreground = Brushes.Black;
     }
 
-    private void EnterToBooking(object sender, MouseButtonEventArgs e)
-    {
-        GridForBooking.Visibility = Visibility.Visible;
-        GridForAcciuntCreating.Visibility = Visibility.Hidden;
-        GridForEnter.Visibility = Visibility.Hidden;
-    }
+    
 
     private void GridExitToEnterBooking_MouseEnter(object sender, MouseEventArgs e)
     {
@@ -202,5 +213,32 @@ public partial class MainWindow : Window
         {
             sourceLabel.Clear();
         }
+    }
+
+    private void GridExitToAccountEdit_MouseEnter(object sender, MouseEventArgs e)
+    {
+        ExitLabelAccountEdit.Foreground = Brushes.Yellow;
+    }
+
+    private void GridExitToAccountEdit_MouseLeave(object sender, MouseEventArgs e)
+    {
+        ExitLabelAccountEdit.Foreground = Brushes.White;
+    }
+
+    private void GridSaveAccountEdit_MouseEnter(object sender, MouseEventArgs e)
+    {
+        SaveLabelAccountEdit.Foreground = Brushes.Yellow;
+    }
+    private void GridSaveAccountEdit_MouseLeave(object sender, MouseEventArgs e)
+    {
+        SaveLabelAccountEdit.Foreground = Brushes.White;
+    }
+    private void GridTicketsAccountEdit_MouseEnter(object sender, MouseEventArgs e)
+    {
+        TicketsLabelAccountEdit.Foreground = Brushes.Yellow;
+    }
+    private void GridTicketsAccountEdit_MouseLeave(object sender, MouseEventArgs e)
+    {
+        TicketsLabelAccountEdit.Foreground = Brushes.White;
     }
 }

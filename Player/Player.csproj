@@ -19,6 +19,7 @@
     <None Remove="Panel.png" />
     <None Remove="Scandinavian Helmet.png" />
     <None Remove="Shield.png" />
+    <None Remove="Ship.png" />
     <None Remove="Sun Cross Sign.png" />
   </ItemGroup>
 
@@ -32,6 +33,7 @@
     <Resource Include="Panel.png" />
     <Resource Include="Scandinavian Helmet.png" />
     <Resource Include="Shield.png" />
+    <Resource Include="Ship.png" />
     <Resource Include="Sun Cross Sign.png" />
   </ItemGroup>
 
