@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Player")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+026b7820d22faea3e3cf26b65ebc7e8e9cf64d06")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16ffc67b83fffbe2abdf438d176c4d81ad78838e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Player")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Player")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -234,9 +234,24 @@ public partial class MainWindow : Window
     {
         TicketsLabelAccountEdit.Foreground = Brushes.White;
     }
+    private void GridDeleteAccountEdit_MouseEnter(object sender, MouseEventArgs e)
+    {
+        DeleteLabelAccountEdit.Foreground = Brushes.Yellow;
+    }
+    private void GridDeleteAccountEdit_MouseLeave(object sender, MouseEventArgs e)
+    {
+        DeleteLabelAccountEdit.Foreground = Brushes.White;
+    }
+    private void GridHelpAccountEdit_MouseEnter(object sender, MouseEventArgs e)
+    {
+        HelpLabelAccountEdit.Foreground = Brushes.Yellow;
+    }
+    private void GridHelpAccountEdit_MouseLeave(object sender, MouseEventArgs e)
+    {
+        HelpLabelAccountEdit.Foreground = Brushes.White;
+    }
 
-
-// - - - Other - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - Other - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     private void FillTextBox_Click(object sender, MouseButtonEventArgs e)
     {
@@ -265,4 +280,6 @@ public partial class MainWindow : Window
             sourcePasswordBox.Clear();
         }
     }
+
+    
 }
