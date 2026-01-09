@@ -37,10 +37,21 @@ public partial class MainWindow : Window
     }
     private void EnterToBooking_Click(object sender, MouseButtonEventArgs e)
     {
-        if (!dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Text) && GridForEnter.Visibility == Visibility.Visible)
+        if (GridForEnter.Visibility == Visibility.Visible)
         {
-            return;
+            if (string.IsNullOrEmpty(LoginTextBoxEnter.Text) || string.IsNullOrEmpty(PasswordTextBoxEnter.Password)) return;
+            if (!dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) return;
         }
+        if(GridForAcciuntCreating.Visibility == Visibility.Visible)
+        {
+            if (string.IsNullOrEmpty(LoginTextBoxCreateAccount.Text) ||
+               string.IsNullOrEmpty(PasswordTextBoxCreateAccount.Password) ||
+               string.IsNullOrEmpty(RepeatTextBoxCreateAccount.Password)) return;
+            if (PasswordTextBoxCreateAccount.Password != RepeatTextBoxCreateAccount.Password) return;
+            if (!dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password, 
+                FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text)) return;
+        }
+
         GridForBooking.Visibility = Visibility.Visible;
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
@@ -54,7 +65,7 @@ public partial class MainWindow : Window
         GridForEnter.Visibility = Visibility.Hidden;
 
         LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
-        PasswordTextBoxAccountEdit.Text = dbConnector.User.Password;
+        PasswordTextBoxAccountEdit.Password = dbConnector.User.Password;
         LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
         FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
     }
@@ -245,9 +256,13 @@ public partial class MainWindow : Window
     }
     private void ClearField_IsVisibleChange(object sender, DependencyPropertyChangedEventArgs e)
     {
-        if (sender is TextBox sourceLabel)
+        if (sender is TextBox sourceTextBox)
         {
-            sourceLabel.Clear();
+            sourceTextBox.Clear();
+        }
+        else if(sender is PasswordBox sourcePasswordBox)
+        {
+            sourcePasswordBox.Clear();
         }
     }
 }

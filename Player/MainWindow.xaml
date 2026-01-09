@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="669" Width="1088" Background="Black" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True">
     <Grid x:Name="MainGrid">
-        <Grid x:Name="GridForBooking" d:IsHidden="True" Visibility="Hidden">
+        <Grid x:Name="GridForBooking" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="/Background.png"/>
             </Grid.Background>
@@ -17,9 +17,9 @@
                     <ImageBrush ImageSource="/Old Map.png"/>
                 </Grid.Background>
             </Grid>
-            <TextBox x:Name="WhereFromTextBoxBooking" HorizontalAlignment="Left" Margin="850,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <TextBox x:Name="WhereFromTextBoxBooking" HorizontalAlignment="Left" Margin="850,93,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="WhereFromLabelBooking" Content="Where from" Margin="850,61,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
-            <TextBox x:Name="WhereToTextBoxBooking" HorizontalAlignment="Left" Margin="850,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <TextBox x:Name="WhereToTextBoxBooking" HorizontalAlignment="Left" Margin="850,147,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="WhereToBooking" Content="Where to" Margin="850,115,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
             <Label x:Name="EnterLabelBooking" Content="Enter" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="100" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelBooking_MouseEnter" MouseLeave="EnterLabelBooking_MouseLeave" Margin="914,174,0,0"/>
             <Grid x:Name="GridExitToEnterBooking" Margin="34,84,952,455" RenderTransformOrigin="0.49,0.541" MouseEnter="GridExitToEnterBooking_MouseEnter" MouseLeave="GridExitToEnterBooking_MouseLeave" MouseDown="EnterToEnter_Click">
@@ -96,9 +96,9 @@
                     <ImageBrush ImageSource="/Old Paper.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBox x:Name="LoginTextBoxEnter" HorizontalAlignment="Center" Margin="0,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <TextBox x:Name="LoginTextBoxEnter" HorizontalAlignment="Center" Margin="0,222,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="EnterLoginLabelEnter" Content="Enter Login" Margin="0,190,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="228" Background="{x:Null}"/>
-            <TextBox x:Name="PasswordTextBoxEnter" HorizontalAlignment="Center" Margin="0,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <PasswordBox x:Name="PasswordTextBoxEnter" PasswordChar="*" HorizontalAlignment="Center" Margin="0,281,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" Height="25" IsVisibleChanged="ClearField_IsVisibleChange"/>
             <Label x:Name="EnterPasswordLabelEnter" Content="Enter Password" Margin="0,249,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="228" Background="{x:Null}"/>
             <Label x:Name="EnterLabelEnter" Content="Enter" Margin="0,317,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Center" Width="100" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelEnter_MouseEnter" MouseLeave="EnterLabelEnter_MouseLeave" MouseDown="EnterToBooking_Click"/>
             <Label x:Name="NewAccountLabelEnter" Content="New Account" Margin="0,356,0,0" VerticalAlignment="Top" Height="26" FontFamily="Viking-Normal" Foreground="Black" HorizontalAlignment="Center" Width="156" Background="{x:Null}" FontWeight="Medium" FontSize="14" MouseDown="EnterToAccontCreate_Click" MouseEnter="NewAccountLabelEnter_MouseEnter" MouseLeave="NewAccountLabelEnter_MouseLeave"/>
@@ -120,16 +120,16 @@
                     <ImageBrush ImageSource="/Old Paper.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBox x:Name="LoginTextBoxCreateAccount" HorizontalAlignment="Left" Margin="623,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <TextBox x:Name="LoginTextBoxCreateAccount" HorizontalAlignment="Left" Margin="623,232,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="EnterLoginLabelCreateAccount" Content="Enter Login" Margin="623,200,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
-            <TextBox x:Name="PasswordTextBoxCreateAccount" HorizontalAlignment="Left" Margin="623,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <PasswordBox x:Name="PasswordTextBoxCreateAccount" PasswordChar="*" HorizontalAlignment="Left" Margin="623,291,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="EnterPasswordLabelCreateAccount" Content="Enter Password" Margin="623,259,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
             <Label x:Name="EnterLabelCreateAccount" Content="Enter" Margin="283,340,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="100" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelCreateAccount_MouseEnter" MouseLeave="EnterLabelCreateAccount_MouseLeave" MouseDown="EnterToBooking_Click"/>
-            <TextBox x:Name="RepeatTextBoxCreateAccount" HorizontalAlignment="Left" Margin="623,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <PasswordBox x:Name="RepeatTextBoxCreateAccount" PasswordChar="*" HorizontalAlignment="Left" Margin="623,345,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="RepeatPasswordLabelCreateAccount" Content="Repeat Password" Margin="623,313,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
-            <TextBox x:Name="FrstNameTextBoxCreateAccount" HorizontalAlignment="Left" Margin="283,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <TextBox x:Name="FirstNameTextBoxCreateAccount" HorizontalAlignment="Left" Margin="283,239,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="EnterFirstNameLabelCreateAccount" Content="Enter First Name" Margin="283,207,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
-            <TextBox x:Name="LastNameTextBoxCreateAccount" HorizontalAlignment="Left" Margin="283,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
+            <TextBox x:Name="LastNameTextBoxCreateAccount" HorizontalAlignment="Left" Margin="283,297,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
             <Label x:Name="EnterLastNameLabelCreateAccount" Content="Enter Last Name" Margin="283,265,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="228" Background="{x:Null}"/>
             <Label x:Name="ExitLabelCreateAccount" Content="Exit" Margin="438,340,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="73" Background="{x:Null}" FontWeight="Medium" MouseDown="EnterToEnter_Click" MouseEnter="ExitLabelCreateAccount_MouseEnter" MouseLeave="ExitLabelCreateAccount_MouseLeave"/>
             <Label x:Name="TitleLabelCreateAccount" Content="Drakkarsales" Margin="0,84,0,0" VerticalAlignment="Top" Height="51" FontFamily="Viking-Normal" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
@@ -138,7 +138,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="/Background.png"/>
             </Grid.Background>
-            <Rectangle x:Name="PaperPanelCreateAccount1" HorizontalAlignment="Center" Height="246" VerticalAlignment="Top" Width="752" Margin="0,156,0,0" RenderTransformOrigin="0.5,0.5">
+            <Rectangle x:Name="PaperPanelAccountEdit" HorizontalAlignment="Center" Height="246" VerticalAlignment="Top" Width="752" Margin="0,156,0,0" RenderTransformOrigin="0.5,0.5">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1" ScaleY="-1"/>
@@ -151,14 +151,14 @@
                     <ImageBrush ImageSource="/Old Paper.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBox x:Name="LoginTextBoxAccountEdit" HorizontalAlignment="Left" Margin="623,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
-            <Label x:Name="EnterLoginLabelCreateAccount1" Content="Login" Margin="623,200,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="68" Background="{x:Null}"/>
-            <TextBox x:Name="PasswordTextBoxAccountEdit" HorizontalAlignment="Left" Margin="623,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
-            <Label x:Name="EnterPasswordLabelCreateAccount1" Content="Password" Margin="623,265,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="117" Background="{x:Null}"/>
-            <TextBox x:Name="FirstNameTextBoxAccountEdit" HorizontalAlignment="Left" Margin="283,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
-            <Label x:Name="EnterFirstNameLabelCreateAccount1" Content="First Name" Margin="283,207,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="139" Background="{x:Null}"/>
-            <TextBox x:Name="LastNameTextBoxAccountEdit" HorizontalAlignment="Left" Margin="283,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="15" FontFamily="Viking-Normal" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange"/>
-            <Label x:Name="EnterLastNameLabelCreateAccount1" Content="Last Name" Margin="283,265,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="130" Background="{x:Null}"/>
+            <TextBox x:Name="LoginTextBoxAccountEdit" HorizontalAlignment="Left" Margin="623,232,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
+            <Label x:Name="EnterLoginLabelAccountEdit" Content="Login" Margin="623,200,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="68" Background="{x:Null}"/>
+            <PasswordBox x:Name="PasswordTextBoxAccountEdit" PasswordChar="*" HorizontalAlignment="Left" Margin="623,297,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
+            <Label x:Name="EnterPasswordLabelAccountEdit" Content="Password" Margin="623,265,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="117" Background="{x:Null}"/>
+            <TextBox x:Name="FirstNameTextBoxAccountEdit" HorizontalAlignment="Left" Margin="283,239,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
+            <Label x:Name="EnterFirstNameLabelAccountEdit" Content="First Name" Margin="283,207,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="139" Background="{x:Null}"/>
+            <TextBox x:Name="LastNameTextBoxAccountEdit" HorizontalAlignment="Left" Margin="283,297,0,0" VerticalAlignment="Top" Width="228" FontSize="22" FontFamily="Norse" BorderBrush="Black" Background="{x:Null}" IsVisibleChanged="ClearField_IsVisibleChange" Height="25"/>
+            <Label x:Name="EnterLastNameLabelAccountEdit" Content="Last Name" Margin="283,265,0,0" VerticalAlignment="Top" Height="27" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Width="130" Background="{x:Null}"/>
             <Label x:Name="TitleLabelAccountEdit" Content="Drakkarsales" Margin="0,84,0,0" VerticalAlignment="Top" Height="51" FontFamily="Viking-Normal" Foreground="White" FontSize="35" HorizontalAlignment="Center"/>
             <Grid x:Name="GridExitToAccountEdit" Margin="971,170,15,369" RenderTransformOrigin="0.49,0.541" MouseEnter="GridExitToAccountEdit_MouseEnter" MouseLeave="GridExitToAccountEdit_MouseLeave" MouseDown="EnterToBooking_Click">
                 <Grid.RowDefinitions>
