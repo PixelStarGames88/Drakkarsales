@@ -179,7 +179,7 @@
                 </Rectangle>
                 <Label x:Name="ExitLabelAccountEdit" Content="Exit" VerticalAlignment="Top" Height="36" FontFamily="Viking-Normal" Foreground="White" FontSize="20" HorizontalAlignment="Left" Width="78" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelEnter_MouseEnter" MouseLeave="EnterLabelEnter_MouseLeave" Margin="10,90,0,0" RenderTransformOrigin="0.509,0.476"/>
             </Grid>
-            <Grid x:Name="GridSaveAccountEdit" Margin="971,315,15,224" RenderTransformOrigin="0.49,0.541" MouseEnter="GridSaveAccountEdit_MouseEnter" MouseLeave="GridSaveAccountEdit_MouseLeave">
+            <Grid x:Name="GridSaveAccountEdit" Margin="971,315,15,224" RenderTransformOrigin="0.49,0.541" MouseEnter="GridSaveAccountEdit_MouseEnter" MouseLeave="GridSaveAccountEdit_MouseLeave" MouseDown="SaveAccountData_Click">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -217,7 +217,7 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
-            <Grid x:Name="GridDeleteAccountEdit" Margin="10,325,971,214" RenderTransformOrigin="0.49,0.541" MouseEnter="GridDeleteAccountEdit_MouseEnter" MouseLeave="GridDeleteAccountEdit_MouseLeave">
+            <Grid x:Name="GridDeleteAccountEdit" Margin="10,325,971,214" RenderTransformOrigin="0.49,0.541" MouseEnter="GridDeleteAccountEdit_MouseEnter" MouseLeave="GridDeleteAccountEdit_MouseLeave" MouseDown="DeleteAccount_Click">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -256,22 +256,22 @@
                 <Label x:Name="HelpLabelAccountEdit" Content="Help" VerticalAlignment="Top" Height="36" FontFamily="Viking-Normal" Foreground="White" FontSize="20" HorizontalAlignment="Center" Width="82" Background="{x:Null}" FontWeight="Medium" Margin="0,114,0,0" RenderTransformOrigin="0.509,0.476"/>
             </Grid>
         </Grid>
-        <Rectangle x:Name="UpPanel" Stroke="Black" Margin="0,-2,0,620" Height="51" MouseDown="MoveWindow_MousePeess">
+        <Rectangle x:Name="UpPanel" Stroke="Black" Margin="0,-2,0,620" MouseDown="MoveWindow_MousePeess">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Panel.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="DownPanel" Stroke="Black" Margin="0,618,0,0" Height="51">
+        <Rectangle x:Name="DownPanel" Stroke="Black" Margin="0,618,0,-1">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Panel.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="TitleSign" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" MouseDown="MoveWindow_MousePeess" Margin="0,-2,0,0">
+        <Rectangle x:Name="TitleSign" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" MouseDown="MoveWindow_MousePeess">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Sun Cross Sign.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="HideWindowPanel" HorizontalAlignment="Left" Height="50" Margin="946,-2,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="3.711,0.555" MouseDown="HideWindow_Click">
+        <Rectangle x:Name="HideWindowPanel" HorizontalAlignment="Left" Height="50" Margin="945,0,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="3.711,0.555" MouseDown="HideWindow_Click">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Hide Window Shield.png"/>
             </Rectangle.Fill>

@@ -38,7 +38,7 @@ public class DataBaseConnector
         {
             using (var conn = GetConnection())
             {
-                string request = "SELECT * FROM program_user WHERE user_login = @login AND user_password = @password";
+                string request = "SELECT * FROM program_user WHERE user_login = @login AND user_password = @password;";
                 using(var cmd = new NpgsqlCommand(request, conn))
                 {
                     cmd.Parameters.AddWithValue("login", login.ToUpper());
@@ -86,5 +86,60 @@ public class DataBaseConnector
         {
             return false;
         }
+    }
+
+    public bool DeleteAccount(string login)
+    {
+        try
+        {
+            using(var conn = GetConnection())
+            {
+                string request = "DELETE FROM Program_User WHERE user_login = @login;";
+                using var cmdDelete = new NpgsqlCommand(request, conn);
+
+                cmdDelete.Parameters.AddWithValue("@login", login);
+
+                cmdDelete.ExecuteNonQuery();
+
+                return true;
+            }
+        }
+        catch
+        {
+            return false; 
+        }
+    }
+
+    public bool UpdateAccount(string login, string password, string firstName, string lastName)
+    {
+        try
+        {
+            using(var conn = GetConnection())
+            {
+                string request = @"UPDATE Program_User
+                                   SET user_login = @new_login, user_password = @new_password, user_name = @new_name
+                                   WHERE user_login = @old_login;";
+                using var cmdUpdate = new NpgsqlCommand(request, conn);
+
+                cmdUpdate.Parameters.AddWithValue("@new_login", login.ToUpper());
+                cmdUpdate.Parameters.AddWithValue("@new_password", password);
+                cmdUpdate.Parameters.AddWithValue("@new_name", (lastName + " " + firstName).ToUpper());
+                cmdUpdate.Parameters.AddWithValue("@old_login", User.Login.ToUpper());
+
+                cmdUpdate.ExecuteNonQuery();
+
+                user = new UserObject(login, password, firstName, lastName);
+
+                return true;
+            }
+        }
+        catch
+        {
+            return false; 
+        }
+    }
+    public void ClearCurrentAccount()
+    {
+        user = new UserObject("", "", "", "");
     }
 }

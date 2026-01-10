@@ -23,6 +23,8 @@ public partial class MainWindow : Window
 
     private void EnterToAccontCreate_Click(object sender, MouseButtonEventArgs e)
     {
+        dbConnector.ClearCurrentAccount();
+
         GridForAcciuntCreating.Visibility = Visibility.Visible;
         GridForEnter.Visibility = Visibility.Hidden;
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
@@ -281,5 +283,25 @@ public partial class MainWindow : Window
         }
     }
 
-    
+    private void SaveAccountData_Click(object sender, MouseButtonEventArgs e)
+    {
+        if (!dbConnector.UpdateAccount(LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
+                                      FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text)) return;
+
+        LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
+        PasswordTextBoxAccountEdit.Password = dbConnector.User.Password;
+        LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
+        FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
+    }
+    private void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
+    {
+        if (!dbConnector.DeleteAccount(dbConnector.User.Login)) return;
+
+        dbConnector.ClearCurrentAccount();
+
+        GridForEnter.Visibility = Visibility.Visible;
+        GridForAcciuntCreating.Visibility = Visibility.Hidden;
+        GridForBooking.Visibility = Visibility.Hidden;
+        GridForAcciuntEdit.Visibility = Visibility.Hidden;
+    }
 }
