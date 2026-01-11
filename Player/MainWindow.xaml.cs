@@ -37,12 +37,12 @@ public partial class MainWindow : Window
         GridForBooking.Visibility = Visibility.Hidden;
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
     }
-    private void EnterToBooking_Click(object sender, MouseButtonEventArgs e)
+    private async void EnterToBooking_Click(object sender, MouseButtonEventArgs e)
     {
         if (GridForEnter.Visibility == Visibility.Visible)
         {
             if (string.IsNullOrEmpty(LoginTextBoxEnter.Text) || string.IsNullOrEmpty(PasswordTextBoxEnter.Password)) return;
-            if (!dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) return;
+            if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) return;
         }
         if(GridForAcciuntCreating.Visibility == Visibility.Visible)
         {
@@ -50,7 +50,7 @@ public partial class MainWindow : Window
                string.IsNullOrEmpty(PasswordTextBoxCreateAccount.Password) ||
                string.IsNullOrEmpty(RepeatTextBoxCreateAccount.Password)) return;
             if (PasswordTextBoxCreateAccount.Password != RepeatTextBoxCreateAccount.Password) return;
-            if (!dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password, 
+            if (!await dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password, 
                 FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text)) return;
         }
 
@@ -283,9 +283,9 @@ public partial class MainWindow : Window
         }
     }
 
-    private void SaveAccountData_Click(object sender, MouseButtonEventArgs e)
+    private async void SaveAccountData_Click(object sender, MouseButtonEventArgs e)
     {
-        if (!dbConnector.UpdateAccount(LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
+        if (!await dbConnector.UpdateAccount(LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
                                       FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text)) return;
 
         LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
@@ -293,9 +293,9 @@ public partial class MainWindow : Window
         LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
         FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
     }
-    private void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
+    private async void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
     {
-        if (!dbConnector.DeleteAccount(dbConnector.User.Login)) return;
+        if (!await dbConnector.DeleteAccount(dbConnector.User.Login)) return;
 
         dbConnector.ClearCurrentAccount();
 

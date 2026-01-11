@@ -56,3 +56,14 @@ C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-
 C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\obj\Debug\net10.0-windows\Player.csproj.AssemblyReference.cache
 C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\obj\Debug\net10.0-windows\Player.csproj.Up2Date
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\MimeMapping.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.Core.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.Functions.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.Gotrue.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.Postgrest.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.Realtime.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Supabase.Storage.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\System.Reactive.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Debug\net10.0-windows\Websocket.Client.dll

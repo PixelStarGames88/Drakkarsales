@@ -1,19 +1,22 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Npgsql;
 using System.IO;
 
 namespace Player;
 
 public class DataBaseConnector
 {
-    string connectionString;
+    string supabaseURl;
+    string supabaseKey;
+
+    Supabase.Client supabase;
+
     UserObject user;
     public UserObject User
     {
-        get 
-        { 
-           return user;
-        } 
+        get
+        {
+            return user;
+        }
     }
     public DataBaseConnector()
     {
@@ -23,64 +26,56 @@ public class DataBaseConnector
                           AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
         IConfiguration configurate = builder.Build();
 
-        connectionString = configurate.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException();
-    }
-    private NpgsqlConnection GetConnection()
-    {
-        var conn = new NpgsqlConnection(connectionString);
+        supabaseURl = configurate.GetConnectionString("UrlConnection") ?? throw new NullReferenceException();
+        supabaseKey = configurate.GetConnectionString("KeyConnection") ?? throw new NullReferenceException();
 
-        conn.Open();
-        return conn;
+
     }
-    public bool DataIsCorrect(string login, string password)
+    private async void GetConnection()
+    {
+        supabase = new Supabase.Client(supabaseURl, supabaseKey);
+        await supabase.InitializeAsync();
+    }
+    public async Task<bool> DataIsCorrect(string login, string password)
     {
         try
         {
-            using (var conn = GetConnection())
+            GetConnection();
+
+            var request = await supabase
+                                .From<ProgramUser>()
+                                .Where(s => s.Password == password && s.Login == login)
+                                .Get();
+
+            foreach (var currentUser in request.Models)
             {
-                string request = "SELECT * FROM program_user WHERE user_login = @login AND user_password = @password;";
-                using(var cmd = new NpgsqlCommand(request, conn))
+                if (currentUser.Password == password && currentUser.Login == login)
                 {
-                    cmd.Parameters.AddWithValue("login", login.ToUpper());
-                    cmd.Parameters.AddWithValue("password", password);
-
-                    using var reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        user = new UserObject(reader.GetString(0), reader.GetString(2), reader.GetString(1).Split(' ')[0], reader.GetString(1).Split(' ')[1]);
-                        return true;
-                    }
-                    return false;
+                    user = new UserObject(currentUser.Login, currentUser.Password, currentUser.Name, currentUser.Name);
+                    return true;
                 }
             }
-        
+
+            return false;
+
         }
-        catch 
-        { 
-           return false;
+        catch
+        {
+            return false;
         }
     }
-    public bool CreateNewAccount(string login, string password, string firstName, string lastName)
+    public async Task<bool> CreateNewAccount(string login, string password, string firstName, string lastName)
     {
         try
         {
-            using(var conn = GetConnection())
-            {
-                string request = @"INSERT INTO Program_User(user_name, user_login, user_password)
-                                   VALUES(@name, @login, @password);";
+            GetConnection();
 
-                using var cmdInsert = new NpgsqlCommand(request, conn);
+            var programUser = new ProgramUser { Login = login.ToUpper(), Password = password, Name = (firstName + " " + lastName).ToUpper() };
 
-                cmdInsert.Parameters.AddWithValue("@name", (firstName + " " + lastName).ToUpper());
-                cmdInsert.Parameters.AddWithValue("@password", password);
-                cmdInsert.Parameters.AddWithValue("@login", login.ToUpper());
+            await supabase.From<ProgramUser>().Insert(programUser);
+            user = new UserObject(login.ToUpper(), password, firstName.ToUpper(), lastName.ToUpper());
 
-                cmdInsert.ExecuteNonQuery();
-                user = new UserObject(login, password, firstName, lastName);
-
-                return true;
-            }
+            return true;
         }
         catch
         {
@@ -88,54 +83,40 @@ public class DataBaseConnector
         }
     }
 
-    public bool DeleteAccount(string login)
+    public async Task<bool> DeleteAccount(string login)
     {
         try
         {
-            using(var conn = GetConnection())
-            {
-                string request = "DELETE FROM Program_User WHERE user_login = @login;";
-                using var cmdDelete = new NpgsqlCommand(request, conn);
+            GetConnection();
 
-                cmdDelete.Parameters.AddWithValue("@login", login);
+            await supabase.From<ProgramUser>().Where(s => s.Login == login).Delete();
 
-                cmdDelete.ExecuteNonQuery();
-
-                return true;
-            }
+            return true;
         }
         catch
         {
-            return false; 
+            return false;
         }
     }
 
-    public bool UpdateAccount(string login, string password, string firstName, string lastName)
+    public async Task<bool> UpdateAccount(string login, string password, string firstName, string lastName)
     {
         try
         {
-            using(var conn = GetConnection())
-            {
-                string request = @"UPDATE Program_User
-                                   SET user_login = @new_login, user_password = @new_password, user_name = @new_name
-                                   WHERE user_login = @old_login;";
-                using var cmdUpdate = new NpgsqlCommand(request, conn);
+            GetConnection();
 
-                cmdUpdate.Parameters.AddWithValue("@new_login", login.ToUpper());
-                cmdUpdate.Parameters.AddWithValue("@new_password", password);
-                cmdUpdate.Parameters.AddWithValue("@new_name", (lastName + " " + firstName).ToUpper());
-                cmdUpdate.Parameters.AddWithValue("@old_login", User.Login.ToUpper());
+            await supabase
+                .From<ProgramUser>()
+                .Where(s => s.Login == user.Login)
+                .Set(s => s.Password, password)
+                .Set(s => s.Name, (firstName + " " + lastName).ToUpper())
+                .Update();
+            return true;
 
-                cmdUpdate.ExecuteNonQuery();
-
-                user = new UserObject(login, password, firstName, lastName);
-
-                return true;
-            }
         }
         catch
         {
-            return false; 
+            return false;
         }
     }
     public void ClearCurrentAccount()
