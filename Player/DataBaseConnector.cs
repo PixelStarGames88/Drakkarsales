@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.IO;
 
 namespace Player;
@@ -29,11 +30,10 @@ public class DataBaseConnector
         supabaseURl = configurate.GetConnectionString("UrlConnection") ?? throw new NullReferenceException();
         supabaseKey = configurate.GetConnectionString("KeyConnection") ?? throw new NullReferenceException();
 
-
+        supabase = new Supabase.Client(supabaseURl, supabaseKey);
     }
     private async void GetConnection()
     {
-        supabase = new Supabase.Client(supabaseURl, supabaseKey);
         await supabase.InitializeAsync();
     }
     public async Task<bool> DataIsCorrect(string login, string password)
@@ -41,6 +41,8 @@ public class DataBaseConnector
         try
         {
             GetConnection();
+
+            login = login.ToUpper();
 
             var request = await supabase
                                 .From<ProgramUser>()
@@ -51,13 +53,14 @@ public class DataBaseConnector
             {
                 if (currentUser.Password == password && currentUser.Login == login)
                 {
-                    user = new UserObject(currentUser.Login, currentUser.Password, currentUser.Name, currentUser.Name);
+                    string firstName = currentUser.Name.Split(' ')[0] ?? throw new NullReferenceException();
+                    string lastName = currentUser.Name.Split(' ')[1] ?? throw new NullReferenceException();
+                    user = new UserObject(currentUser.Login, currentUser.Password, firstName, lastName);
                     return true;
                 }
             }
 
             return false;
-
         }
         catch
         {
@@ -108,9 +111,13 @@ public class DataBaseConnector
             await supabase
                 .From<ProgramUser>()
                 .Where(s => s.Login == user.Login)
+                .Set(s => s.Login, login.ToUpper())
                 .Set(s => s.Password, password)
                 .Set(s => s.Name, (firstName + " " + lastName).ToUpper())
                 .Update();
+
+            user = new UserObject(login.ToUpper(), password, firstName.ToUpper(), lastName.ToUpper());
+
             return true;
 
         }

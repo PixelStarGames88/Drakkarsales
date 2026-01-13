@@ -10,7 +10,7 @@ namespace Player;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private DataBaseConnector dbConnector;
+    private DataBaseConnector dbConnector = null!;
 
     public MainWindow()
     {
@@ -292,6 +292,8 @@ public partial class MainWindow : Window
         PasswordTextBoxAccountEdit.Password = dbConnector.User.Password;
         LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
         FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
+
+
     }
     private async void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
     {

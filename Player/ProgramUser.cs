@@ -7,11 +7,10 @@ namespace Player;
 public class ProgramUser : BaseModel
 {
     [Column("user_login")]
-    [PrimaryKey("user_login")]
-    public string Login { get; set; }
+    public string Login { get; set; } = null!;
     [Column("user_password")]
-    public string Password { get; set; }
+    public string Password { get; set; } = null!;
     [Column("user_name")]
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
 }
