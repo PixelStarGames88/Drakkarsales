@@ -49,3 +49,7 @@ C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Release\net10.
 C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Release\net10.0-windows\Supabase.Storage.dll
 C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Release\net10.0-windows\System.Reactive.dll
 C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\bin\Release\net10.0-windows\Websocket.Client.dll
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\obj\Release\net10.0-windows\ErrorWindow.g.cs
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\obj\Release\net10.0-windows\MessageWindow.g.cs
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\obj\Release\net10.0-windows\ErrorWindow.baml
+C:\Users\Ivar\Desktop\Склад\Programming\C#\Player\Player\obj\Release\net10.0-windows\MessageWindow.baml

@@ -12,6 +12,7 @@
     <None Remove="Arrow Shield.png" />
     <None Remove="Background.png" />
     <None Remove="Broken Skull.png" />
+    <None Remove="Evil Totem.png" />
     <None Remove="Full Screen Shield.png" />
     <None Remove="Hide Window Shield.png" />
     <None Remove="Old Map.png" />
@@ -22,6 +23,7 @@
     <None Remove="Shield.png" />
     <None Remove="Ship.png" />
     <None Remove="Sun Cross Sign.png" />
+    <None Remove="Totem Message.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +40,7 @@
     <Resource Include="Arrow Shield.png" />
     <Resource Include="Background.png" />
     <Resource Include="Broken Skull.png" />
+    <Resource Include="Evil Totem.png" />
     <Resource Include="Hide Window Shield.png" />
     <Resource Include="Old Map.png" />
     <Resource Include="Old Paper.png" />
@@ -47,6 +50,7 @@
     <Resource Include="Shield.png" />
     <Resource Include="Ship.png" />
     <Resource Include="Sun Cross Sign.png" />
+    <Resource Include="Totem Message.png" />
   </ItemGroup>
 
 </Project>

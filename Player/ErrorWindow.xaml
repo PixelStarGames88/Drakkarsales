@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Player"
+        xmlns:Accessibility="clr-namespace:Accessibility;assembly=Accessibility" x:Class="Player.ErrorWindow"
+        mc:Ignorable="d"
+        Title="ErrorWindow" Height="449" Width="848" Background="Black" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True">
+    <Grid x:Name="MainGrid">
+        <Grid x:Name="GridForEnter">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Background.png"/>
+            </Grid.Background>
+            <Rectangle
+            Width="740" VerticalAlignment="Top" x:Name="PaperPanelEnter" Height="312" HorizontalAlignment="Left" Margin="61,70,0,0">
+                <Rectangle.Fill
+            >
+                    <ImageBrush
+            ImageSource="/Old Paper.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="GotItLabelMessage" Content="Got it" Margin="381,307,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="100" Background="{x:Null}" FontWeight="Medium" MouseLeave="GotItLabelMessage_MouseLeave" MouseEnter="GotItLabelMessage_MouseEnter" MouseDown="CloseWindow"/>
+            <Label x:Name="MessageLabelMessage" Content="" Margin="0,158,0,0" VerticalAlignment="Top" Height="144" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="602" Background="{x:Null}" Grid.ColumnSpan="12" Grid.RowSpan="12" AutomationProperties.IsOffscreenBehavior="FromClip" VerticalContentAlignment="Center" UseLayoutRounding="False" FontWeight="Normal" IsEnabled="False"/>
+            <Label x:Name="TitleLabelMessage" Content="Error!" Margin="0,107,0,0" VerticalAlignment="Top" Height="51" FontFamily="Viking-Normal" Foreground="Black" FontSize="25" HorizontalAlignment="Center" Background="{x:Null}"/>
+        </Grid>
+        <Rectangle x:Name="UpPanel" Margin="0,-2,0,400" MouseDown="MoveWindow_MousePress" HorizontalAlignment="Center" Width="848">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Panel.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="DownPanel" Margin="0,399,0,0">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Panel.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="TitleSign" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" MouseDown="MoveWindow_MousePress" Margin="0,-2,0,0" RenderTransformOrigin="-0.232,0.508">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Evil Totem.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="ClosePanel" HorizontalAlignment="Left" Height="50" Margin="798,0,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.52,0.52" MouseDown="CloseWindow">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Shield.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Grid>
+</Window>

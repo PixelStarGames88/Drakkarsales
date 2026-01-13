@@ -41,17 +41,59 @@ public partial class MainWindow : Window
     {
         if (GridForEnter.Visibility == Visibility.Visible)
         {
-            if (string.IsNullOrEmpty(LoginTextBoxEnter.Text) || string.IsNullOrEmpty(PasswordTextBoxEnter.Password)) return;
-            if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) return;
+            if (string.IsNullOrEmpty(LoginTextBoxEnter.Text))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By leaving the login field empty,\nyou have angered Odin!");
+                errorWindow.Show();
+                return;
+            }
+            if (string.IsNullOrEmpty(PasswordTextBoxEnter.Password)) 
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By leaving the password field empty,\nyou have angered Odin!");
+                errorWindow.Show();
+                return; 
+            }
+            if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) 
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By entering an incorrect password or login,\nyou have angered Odin!");
+                errorWindow.Show();
+                return; 
+            }
         }
         if(GridForAcciuntCreating.Visibility == Visibility.Visible)
         {
-            if (string.IsNullOrEmpty(LoginTextBoxCreateAccount.Text) ||
-               string.IsNullOrEmpty(PasswordTextBoxCreateAccount.Password) ||
-               string.IsNullOrEmpty(RepeatTextBoxCreateAccount.Password)) return;
-            if (PasswordTextBoxCreateAccount.Password != RepeatTextBoxCreateAccount.Password) return;
+            if (string.IsNullOrEmpty(LoginTextBoxCreateAccount.Text))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By leaving the login field empty,\nyou have angered Odin!");
+                errorWindow.Show();
+                return;
+            }
+            if (string.IsNullOrEmpty(PasswordTextBoxCreateAccount.Password))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By leaving the password field empty,\nyou have angered Odin!");
+                errorWindow.Show();
+                return;
+            }
+            if(string.IsNullOrEmpty(RepeatTextBoxCreateAccount.Password))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By not repeating the password,\nyou have angered Odin!");
+                errorWindow.Show();
+                return;
+            }
+            if (PasswordTextBoxCreateAccount.Password != RepeatTextBoxCreateAccount.Password)
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By repeating the password incorrectly,\nyou have angered Odin!");
+                errorWindow.Show();
+                return;
+            }
+
             if (!await dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password, 
-                FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text)) return;
+                FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("By trying to enter an existing login,\nyou have angered Odin!");
+                errorWindow.Show();
+                return;
+            }
         }
 
         GridForBooking.Visibility = Visibility.Visible;
@@ -285,19 +327,42 @@ public partial class MainWindow : Window
 
     private async void SaveAccountData_Click(object sender, MouseButtonEventArgs e)
     {
+        if(string.IsNullOrEmpty(LoginTextBoxAccountEdit.Text))
+        {
+            ErrorWindow errorWindow = new ErrorWindow("By leaving the login field empty,\nyou have angered Odin!");
+            errorWindow.Show();
+            return;
+        }
+        if (string.IsNullOrEmpty(PasswordTextBoxAccountEdit.Password))
+        {
+            ErrorWindow errorWindow = new ErrorWindow("By leaving the password field empty,\nyou have angered Odin!");
+            errorWindow.Show();
+            return;
+        }
         if (!await dbConnector.UpdateAccount(LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
-                                      FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text)) return;
+                                      FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text))
+        {
+            ErrorWindow errorWindow = new ErrorWindow("By trying to change your login to an existing one,\nyou have angered Odin!");
+            errorWindow.Show();
+            return; 
+        }
 
         LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
         PasswordTextBoxAccountEdit.Password = dbConnector.User.Password;
         LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
         FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
 
-
+        MessageWindow messageWindow = new MessageWindow("The changes were saved successfully!");
+        messageWindow.Show();
     }
     private async void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
     {
-        if (!await dbConnector.DeleteAccount(dbConnector.User.Login)) return;
+        if (!await dbConnector.DeleteAccount(dbConnector.User.Login))
+        {
+            ErrorWindow errorWindow = new ErrorWindow("Odin did not approve the deletion of this account!");
+            errorWindow.Show();
+            return;
+        }
 
         dbConnector.ClearCurrentAccount();
 
@@ -305,5 +370,8 @@ public partial class MainWindow : Window
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
         GridForBooking.Visibility = Visibility.Hidden;
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
+
+        MessageWindow messageWindow = new MessageWindow("The account was deleted successfully!");
+        messageWindow.Show();
     }
 }
