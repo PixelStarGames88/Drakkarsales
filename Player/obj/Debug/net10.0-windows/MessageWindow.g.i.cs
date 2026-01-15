@@ -134,7 +134,7 @@ namespace Player {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Player;V1.0.0.0;component/messagewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Player;component/messagewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MessageWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

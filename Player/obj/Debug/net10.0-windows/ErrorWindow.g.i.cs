@@ -134,7 +134,7 @@ namespace Player {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Player;V1.0.0.0;component/errorwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Player;component/errorwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ErrorWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

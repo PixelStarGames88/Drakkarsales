@@ -66,7 +66,7 @@
                 </Rectangle>
                 <Label x:Name="EditAccountLabelBooking" Content="You" VerticalAlignment="Top" Height="36" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Center" Width="70" Background="{x:Null}" FontWeight="Medium" MouseEnter="EnterLabelEnter_MouseEnter" MouseLeave="EnterLabelEnter_MouseLeave" Margin="0,108,0,0" RenderTransformOrigin="0.509,0.476"/>
             </Grid>
-            <Grid x:Name="GridHelpBooking" Margin="34,388,952,121" RenderTransformOrigin="0.49,0.541" MouseEnter="GridHelpBooking_MouseEnter" MouseLeave="GridHelpBooking_MouseLeave" MouseDown="EnterToEnter_Click">
+            <Grid x:Name="GridHelpBooking" Margin="34,388,952,121" RenderTransformOrigin="0.49,0.541" MouseEnter="GridHelpBooking_MouseEnter" MouseLeave="GridHelpBooking_MouseLeave" MouseDown="HelpBooking_Click">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -236,7 +236,7 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
-            <Grid x:Name="GridHelpAccountEdit" Margin="10,172,976,351" RenderTransformOrigin="0.49,0.541" MouseEnter="GridHelpAccountEdit_MouseEnter" MouseLeave="GridHelpAccountEdit_MouseLeave">
+            <Grid x:Name="GridHelpAccountEdit" Margin="10,172,976,351" RenderTransformOrigin="0.49,0.541" MouseEnter="GridHelpAccountEdit_MouseEnter" MouseLeave="GridHelpAccountEdit_MouseLeave" MouseDown="HelpAccountEdit_Help">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
