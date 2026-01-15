@@ -24,8 +24,6 @@
     <None Remove="Ship.png" />
     <None Remove="Sun Cross Sign.png" />
     <None Remove="Totem Message.png" />
-    <None Remove="Запись 2026-01-15 154128.gif" />
-    <None Remove="Запись 2026-01-15 154229.mp4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,8 +51,6 @@
     <Resource Include="Ship.png" />
     <Resource Include="Sun Cross Sign.png" />
     <Resource Include="Totem Message.png" />
-    <Resource Include="Запись 2026-01-15 154128.gif" />
-    <Resource Include="Запись 2026-01-15 154229.mp4" />
   </ItemGroup>
 
 </Project>

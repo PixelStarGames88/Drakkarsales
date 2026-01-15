@@ -21,7 +21,7 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Label x:Name="GotItLabelMessage" Content="Got it" Margin="381,307,0,0" VerticalAlignment="Top" Height="34" FontFamily="Viking-Normal" Foreground="Black" FontSize="20" HorizontalAlignment="Left" Width="100" Background="{x:Null}" FontWeight="Medium" MouseLeave="GotItLabelMessage_MouseLeave" MouseEnter="GotItLabelMessage_MouseEnter" MouseDown="CloseWindow"/>
-            <Label x:Name="MessageLabelMessage" Content="" Margin="0,158,0,0" VerticalAlignment="Top" Height="144" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="602" Background="{x:Null}" Grid.ColumnSpan="12" Grid.RowSpan="12" AutomationProperties.IsOffscreenBehavior="FromClip" VerticalContentAlignment="Center" UseLayoutRounding="False" FontWeight="Normal" IsEnabled="False" HorizontalContentAlignment="Center"/>
+            <Label x:Name="MessageLabelMessage" Content="" Margin="0,158,0,0" VerticalAlignment="Top" Height="144" FontFamily="Viking-Normal" Foreground="Black" FontSize="15" HorizontalAlignment="Center" Width="602" Background="{x:Null}" Grid.ColumnSpan="12" Grid.RowSpan="12" AutomationProperties.IsOffscreenBehavior="FromClip" VerticalContentAlignment="Center" UseLayoutRounding="False" FontWeight="Normal" IsEnabled="False"/>
             <Label x:Name="TitleLabelMessage" Content="Error!" Margin="0,107,0,0" VerticalAlignment="Top" Height="51" FontFamily="Viking-Normal" Foreground="Black" FontSize="25" HorizontalAlignment="Center" Background="{x:Null}"/>
         </Grid>
         <Rectangle x:Name="UpPanel" Margin="0,-2,0,400" MouseDown="MoveWindow_MousePress" HorizontalAlignment="Center" Width="848">

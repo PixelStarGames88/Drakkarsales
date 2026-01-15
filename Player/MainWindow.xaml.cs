@@ -19,7 +19,7 @@ public partial class MainWindow : Window
     }
 
 
-// - - - Transition between windows - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - Transition between windows - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     private void EnterToAccontCreate_Click(object sender, MouseButtonEventArgs e)
     {
@@ -47,20 +47,20 @@ public partial class MainWindow : Window
                 errorWindow.Show();
                 return;
             }
-            if (string.IsNullOrEmpty(PasswordTextBoxEnter.Password)) 
+            if (string.IsNullOrEmpty(PasswordTextBoxEnter.Password))
             {
                 ErrorWindow errorWindow = new ErrorWindow("By leaving the password field empty,\nyou have angered Odin!");
                 errorWindow.Show();
-                return; 
+                return;
             }
-            if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) 
+            if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password))
             {
                 ErrorWindow errorWindow = new ErrorWindow("Odin did not approve your entering to account!\nMay be, you entered incorrect login or password!\nOr this account not exists!");
                 errorWindow.Show();
-                return; 
+                return;
             }
         }
-        if(GridForAcciuntCreating.Visibility == Visibility.Visible)
+        if (GridForAcciuntCreating.Visibility == Visibility.Visible)
         {
             if (string.IsNullOrEmpty(LoginTextBoxCreateAccount.Text))
             {
@@ -74,7 +74,7 @@ public partial class MainWindow : Window
                 errorWindow.Show();
                 return;
             }
-            if(string.IsNullOrEmpty(RepeatTextBoxCreateAccount.Password))
+            if (string.IsNullOrEmpty(RepeatTextBoxCreateAccount.Password))
             {
                 ErrorWindow errorWindow = new ErrorWindow("By not repeating the password,\nyou have angered Odin!");
                 errorWindow.Show();
@@ -87,7 +87,7 @@ public partial class MainWindow : Window
                 return;
             }
 
-            if (!await dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password, 
+            if (!await dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password,
                 FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text))
             {
                 ErrorWindow errorWindow = new ErrorWindow("Odin did not approve the creating of your account!\nMay be, this account already exists!\nTry to sacrifice your small baby to Odin,\nor enter different login, that still not exists.");
@@ -115,7 +115,7 @@ public partial class MainWindow : Window
     }
 
 
-// - - - System events - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - System events - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     private void ExitApplication_Click(object sender, MouseButtonEventArgs e)
     {
@@ -134,7 +134,7 @@ public partial class MainWindow : Window
     }
 
 
-// - - - Mouse enter leave reactions red - black - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - Mouse enter leave reactions red - black - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     private void EnterLabelCreateAccount_MouseEnter(object sender, MouseEventArgs e)
     {
@@ -299,7 +299,7 @@ public partial class MainWindow : Window
 
     private void FillTextBox_Click(object sender, MouseButtonEventArgs e)
     {
-        if(e.Source is Label sourceLabel)
+        if (e.Source is Label sourceLabel)
         {
             if (WhereFromTextBoxBooking.IsFocused)
             {
@@ -319,7 +319,7 @@ public partial class MainWindow : Window
         {
             sourceTextBox.Clear();
         }
-        else if(sender is PasswordBox sourcePasswordBox)
+        else if (sender is PasswordBox sourcePasswordBox)
         {
             sourcePasswordBox.Clear();
         }
@@ -327,7 +327,7 @@ public partial class MainWindow : Window
 
     private async void SaveAccountData_Click(object sender, MouseButtonEventArgs e)
     {
-        if(string.IsNullOrEmpty(LoginTextBoxAccountEdit.Text))
+        if (string.IsNullOrEmpty(LoginTextBoxAccountEdit.Text))
         {
             ErrorWindow errorWindow = new ErrorWindow("By leaving the login field empty,\nyou have angered Odin!");
             errorWindow.Show();
@@ -344,7 +344,7 @@ public partial class MainWindow : Window
         {
             ErrorWindow errorWindow = new ErrorWindow("Odin did not approve your changes!\nTry to sacrifice your small baby to Odin,\nor enter different login, that still not exists.");
             errorWindow.Show();
-            return; 
+            return;
         }
 
         LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
