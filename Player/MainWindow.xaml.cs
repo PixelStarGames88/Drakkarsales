@@ -55,7 +55,7 @@ public partial class MainWindow : Window
             }
             if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password)) 
             {
-                ErrorWindow errorWindow = new ErrorWindow("By entering an incorrect password or login,\nyou have angered Odin!");
+                ErrorWindow errorWindow = new ErrorWindow("Odin did not approve your entering to account!\nMay be, you entered incorrect login or password!\nOr this account not exists!");
                 errorWindow.Show();
                 return; 
             }
@@ -90,7 +90,7 @@ public partial class MainWindow : Window
             if (!await dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password, 
                 FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text))
             {
-                ErrorWindow errorWindow = new ErrorWindow("By trying to enter an existing login,\nyou have angered Odin!");
+                ErrorWindow errorWindow = new ErrorWindow("Odin did not approve the creating of your account!\nMay be, this account already exists!\nTry to sacrifice your small baby to Odin,\nor enter different login, that still not exists.");
                 errorWindow.Show();
                 return;
             }
@@ -342,7 +342,7 @@ public partial class MainWindow : Window
         if (!await dbConnector.UpdateAccount(LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
                                       FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text))
         {
-            ErrorWindow errorWindow = new ErrorWindow("By trying to change your login to an existing one,\nyou have angered Odin!");
+            ErrorWindow errorWindow = new ErrorWindow("Odin did not approve your changes!\nTry to sacrifice your small baby to Odin,\nor enter different login, that still not exists.");
             errorWindow.Show();
             return; 
         }
@@ -372,6 +372,18 @@ public partial class MainWindow : Window
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
 
         MessageWindow messageWindow = new MessageWindow("The account was deleted successfully!");
+        messageWindow.Show();
+    }
+
+    private void HelpBooking_Click(object sender, MouseButtonEventArgs e)
+    {
+        MessageWindow messageWindow = new MessageWindow("Select text box by clicking on it.\nThen click on any city on the map.");
+        messageWindow.Show();
+    }
+
+    private void HelpAccountEdit_Help(object sender, MouseButtonEventArgs e)
+    {
+        MessageWindow messageWindow = new MessageWindow("Change data on text boxes.\nThen click button \"Save\".\nOtherwise, changes will not save!");
         messageWindow.Show();
     }
 }
