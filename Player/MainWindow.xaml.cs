@@ -10,7 +10,7 @@ namespace Player;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private DataBaseConnector dbConnector = null!;
+    private ASPConnector dbConnector = null!;
 
     public MainWindow()
     {

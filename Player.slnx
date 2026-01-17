@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="ASP Connection/ASP Connection.csproj" Id="2dc62dec-bdc2-4bf9-a5ba-380a0c750aed" />
   <Project Path="Player/Player.csproj" />
 </Solution>

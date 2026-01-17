@@ -1,0 +1,96 @@
+﻿using Supabase;
+
+namespace Player.Api.Services;
+
+public class DataBaseConnector
+{
+    Supabase.Client supabase;
+
+    public DataBaseConnector(IConfiguration configuration)
+    {
+        var supabaseURl = configuration.GetConnectionString("UrlConnection") ?? throw new NullReferenceException();
+        var supabaseKey = configuration.GetConnectionString("KeyConnection") ?? throw new NullReferenceException();
+
+        supabase = new Supabase.Client(supabaseURl, supabaseKey);
+    }
+    private async void GetConnection()
+    {
+        await supabase.InitializeAsync();
+    }
+    public async Task<bool> DataIsCorrect(string login, string password)
+    {
+        try
+        {
+            GetConnection();
+
+            login = login.ToUpper();
+
+            var request = await supabase
+                                .From<ProgramUser>()
+                                .Where(s => s.Password == password && s.Login == login)
+                                .Get();
+
+            return request.Models.Any();
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    public async Task<bool> CreateNewAccount(string login, string password, string firstName, string lastName)
+    {
+        try
+        {
+            GetConnection();
+
+            var programUser = new ProgramUser { Login = login.ToUpper(), Password = password, Name = (firstName + " " + lastName).ToUpper() };
+
+            await supabase.From<ProgramUser>().Insert(programUser);
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteAccount(string login)
+    {
+        try
+        {
+            GetConnection();
+
+            await supabase.From<ProgramUser>().Where(s => s.Login == login).Delete();
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> UpdateAccount(string currentLogin, string login, string password, string firstName, string lastName)
+    {
+        try
+        {
+            GetConnection();
+
+            await supabase
+                .From<ProgramUser>()
+                .Where(s => s.Login == currentLogin)
+                .Set(s => s.Login, login.ToUpper())
+                .Set(s => s.Password, password)
+                .Set(s => s.Name, (firstName + " " + lastName).ToUpper())
+                .Update();
+
+            return true;
+
+        }
+        catch
+        {
+            return false;
+        }
+    }
+}

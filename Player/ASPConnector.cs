@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using System.IO;
 
 namespace Player;
 
-public class DataBaseConnector
+public class ASPConnector
 {
     string supabaseURl;
     string supabaseKey;
@@ -19,7 +18,7 @@ public class DataBaseConnector
             return user;
         }
     }
-    public DataBaseConnector()
+    public ASPConnector()
     {
         user = new UserObject("", "", "", "");
         var builder = new ConfigurationBuilder().
