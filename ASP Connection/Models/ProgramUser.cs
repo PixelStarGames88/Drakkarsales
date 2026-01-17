@@ -1,7 +1,7 @@
 ﻿using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 
-namespace Player.Api.Services;
+namespace ASP_Connection.Models;
 
 [Table("program_user")]
 public class ProgramUser : BaseModel

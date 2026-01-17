@@ -1,6 +1,6 @@
-﻿using Supabase;
+﻿using ASP_Connection.Models;
 
-namespace Player.Api.Services;
+namespace ASP_Connection.Services;
 
 public class DataBaseConnector
 {
