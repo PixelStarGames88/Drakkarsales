@@ -1,23 +1,40 @@
-Player/bin/
-Player/obj/
-obj/
-bin/
-.suo
+.vs/
+*.suo
 *.user
-*.config.user
-*.resharper
-*.bak
-*.cache
-*.vs/
-*.vsp
-*.vspx
-*.log
-*.dll
+*.userosscache
+*.sln.docstates
 
+[Bb]in/
+[Oo]bj/
+publish/
+out/
+dist/
 
-**/*.db
-app.db
-.vs
+project.lock.json
+*.csproj.user
+*.pubxml
+*.publishproj
+
 appsettings.json
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+*.key
+*.pem
+*.json
+
+packages/
+*.nupkg
+nuget.exe
+*.http
+
+.idea/
+*.swp
+*.swo
+.vscode/
+
+.DS_Store
+Thumbs.db
 /Player/Запись 2026-01-15 154128.gif
 /Player/Запись 2026-01-15 154229.mp4

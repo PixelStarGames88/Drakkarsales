@@ -1,7 +1,7 @@
 ﻿using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 
-namespace Player;
+namespace ASP_Connection.Models;
 
 [Table("program_user")]
 public class ProgramUser : BaseModel
@@ -12,5 +12,4 @@ public class ProgramUser : BaseModel
     public string Password { get; set; } = null!;
     [Column("user_name")]
     public string Name { get; set; } = null!;
-
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.Extensions.Configuration;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,12 +11,21 @@ namespace Player;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private DataBaseConnector dbConnector = null!;
+    private ASPConnector aspConnector = null!;
+    private UserModel userObject = null!;
 
     public MainWindow()
     {
         InitializeComponent();
-        AddFunctional();
+
+        var configuration = new ConfigurationBuilder()
+                               .SetBasePath(AppContext.BaseDirectory)
+                               .AddJsonFile("appsettings.json")
+                               .Build();
+
+        string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException();
+
+        aspConnector = new(connectionString);
     }
 
 
@@ -23,8 +33,6 @@ public partial class MainWindow : Window
 
     private void EnterToAccontCreate_Click(object sender, MouseButtonEventArgs e)
     {
-        dbConnector.ClearCurrentAccount();
-
         GridForAcciuntCreating.Visibility = Visibility.Visible;
         GridForEnter.Visibility = Visibility.Hidden;
         GridForAcciuntEdit.Visibility = Visibility.Hidden;
@@ -53,12 +61,24 @@ public partial class MainWindow : Window
                 errorWindow.Show();
                 return;
             }
-            if (!await dbConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password))
+
+            var user = await aspConnector.DataIsCorrect(LoginTextBoxEnter.Text, PasswordTextBoxEnter.Password);
+
+            if (user == null)
             {
                 ErrorWindow errorWindow = new ErrorWindow("Odin did not approve your entering to account!\nMay be, you entered incorrect login or password!\nOr this account not exists!");
                 errorWindow.Show();
                 return;
             }
+
+            userObject = new UserModel
+            {
+                Login = user.Login,
+                Password = user.Password,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
         }
         if (GridForAcciuntCreating.Visibility == Visibility.Visible)
         {
@@ -87,13 +107,24 @@ public partial class MainWindow : Window
                 return;
             }
 
-            if (!await dbConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text, PasswordTextBoxCreateAccount.Password,
-                FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text))
+            var user = await aspConnector.CreateNewAccount(LoginTextBoxCreateAccount.Text,
+                PasswordTextBoxCreateAccount.Password, RepeatTextBoxCreateAccount.Password,
+                FirstNameTextBoxCreateAccount.Text, LastNameTextBoxCreateAccount.Text);
+
+            if (user == null)
             {
                 ErrorWindow errorWindow = new ErrorWindow("Odin did not approve the creating of your account!\nMay be, this account already exists!\nTry to sacrifice your small baby to Odin,\nor enter different login, that still not exists.");
                 errorWindow.Show();
                 return;
             }
+
+            userObject = new UserModel
+            {
+                Login = user.Login,
+                Password = user.Password,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
         }
 
         GridForBooking.Visibility = Visibility.Visible;
@@ -108,10 +139,10 @@ public partial class MainWindow : Window
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
         GridForEnter.Visibility = Visibility.Hidden;
 
-        LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
-        PasswordTextBoxAccountEdit.Password = dbConnector.User.Password;
-        LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
-        FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
+        LoginTextBoxAccountEdit.Text = userObject.Login;
+        PasswordTextBoxAccountEdit.Password = userObject.Password;
+        LastNameTextBoxAccountEdit.Text = userObject.LastName;
+        FirstNameTextBoxAccountEdit.Text = userObject.FirstName;
     }
 
 
@@ -339,32 +370,40 @@ public partial class MainWindow : Window
             errorWindow.Show();
             return;
         }
-        if (!await dbConnector.UpdateAccount(LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
-                                      FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text))
+        var user = await aspConnector.UpdateAccount(userObject.Login, LoginTextBoxAccountEdit.Text, PasswordTextBoxAccountEdit.Password,
+                                      FirstNameTextBoxAccountEdit.Text, LastNameTextBoxAccountEdit.Text);
+
+        if (user == null)
         {
             ErrorWindow errorWindow = new ErrorWindow("Odin did not approve your changes!\nTry to sacrifice your small baby to Odin,\nor enter different login, that still not exists.");
             errorWindow.Show();
             return;
         }
 
-        LoginTextBoxAccountEdit.Text = dbConnector.User.Login;
-        PasswordTextBoxAccountEdit.Password = dbConnector.User.Password;
-        LastNameTextBoxAccountEdit.Text = dbConnector.User.LastName;
-        FirstNameTextBoxAccountEdit.Text = dbConnector.User.FirstName;
+        userObject = new UserModel
+        {
+            Login = user.Login,
+            Password = user.Password,
+            FirstName = user.FirstName,
+            LastName = user.LastName
+        };
+
+        LoginTextBoxAccountEdit.Text = userObject.Login;
+        PasswordTextBoxAccountEdit.Password = userObject.Password;
+        LastNameTextBoxAccountEdit.Text = userObject.LastName;
+        FirstNameTextBoxAccountEdit.Text = userObject.FirstName;
 
         MessageWindow messageWindow = new MessageWindow("The changes were saved successfully!");
         messageWindow.Show();
     }
     private async void DeleteAccount_Click(object sender, MouseButtonEventArgs e)
     {
-        if (!await dbConnector.DeleteAccount(dbConnector.User.Login))
+        if (!await aspConnector.DeleteAccount(userObject.Login))
         {
             ErrorWindow errorWindow = new ErrorWindow("Odin did not approve the deletion of this account!");
             errorWindow.Show();
             return;
         }
-
-        dbConnector.ClearCurrentAccount();
 
         GridForEnter.Visibility = Visibility.Visible;
         GridForAcciuntCreating.Visibility = Visibility.Hidden;
