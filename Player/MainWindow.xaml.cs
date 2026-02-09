@@ -167,163 +167,40 @@ public partial class MainWindow : Window
 
     // - - - Mouse enter leave reactions red - black - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    private void EnterLabelCreateAccount_MouseEnter(object sender, MouseEventArgs e)
+    private void LabelRed_MouseEnter(object sender, MouseEventArgs e)
     {
-        EnterLabelCreateAccount.Foreground = Brushes.Red;
+        if (sender is Label)
+        {
+            Label someLabel = sender as Label ?? throw new NullReferenceException();
+            someLabel.Foreground = Brushes.Red;
+        }
     }
-    private void EnterLabelCreateAccount_MouseLeave(object sender, MouseEventArgs e)
+    private void LabelBlack_MouseLeave(object sender, MouseEventArgs e)
     {
-        EnterLabelCreateAccount.Foreground = Brushes.Black;
+        if (sender is Label)
+        {
+            Label someLabel = sender as Label ?? throw new NullReferenceException();
+            someLabel.Foreground = Brushes.Black;
+        }
     }
-    private void ExitLabelCreateAccount_MouseEnter(object sender, MouseEventArgs e)
-    {
-        ExitLabelCreateAccount.Foreground = Brushes.Red;
-    }
-    private void ExitLabelCreateAccount_MouseLeave(object sender, MouseEventArgs e)
-    {
-        ExitLabelCreateAccount.Foreground = Brushes.Black;
-    }
-    private void NewAccountLabelEnter_MouseEnter(object sender, MouseEventArgs e)
-    {
-        NewAccountLabelEnter.Foreground = Brushes.Red;
-    }
-    private void NewAccountLabelEnter_MouseLeave(object sender, MouseEventArgs e)
-    {
-        NewAccountLabelEnter.Foreground = Brushes.Black;
-    }
-    private void EnterLabelEnter_MouseEnter(object sender, MouseEventArgs e)
-    {
-        EnterLabelEnter.Foreground = Brushes.Red;
-    }
-    private void EnterLabelEnter_MouseLeave(object sender, MouseEventArgs e)
-    {
-        EnterLabelEnter.Foreground = Brushes.Black;
-    }
-    private void GridExitToEnterBooking_MouseEnter(object sender, MouseEventArgs e)
-    {
-        ExitLabelBooking.Foreground = Brushes.Red;
-    }
-    private void GridExitToEnterBooking_MouseLeave(object sender, MouseEventArgs e)
-    {
-        ExitLabelBooking.Foreground = Brushes.Black;
-    }
-    private void EnterLabelBooking_MouseEnter(object sender, MouseEventArgs e)
-    {
-        EnterLabelBooking.Foreground = Brushes.Red;
-    }
-    private void EnterLabelBooking_MouseLeave(object sender, MouseEventArgs e)
-    {
-        EnterLabelBooking.Foreground = Brushes.Black;
-    }
-    private void EoforvikLabel_MouseEnter(object sender, MouseEventArgs e)
-    {
-        EoforvikLabel.Foreground = Brushes.Red;
-    }
-    private void EoforvikLabel_MouseLeave(object sender, MouseEventArgs e)
-    {
-        EoforvikLabel.Foreground = Brushes.Black;
-    }
-    private void LondonLabel_MouseEnter(object sender, MouseEventArgs e)
-    {
-        LondonLabel.Foreground = Brushes.Red;
-    }
-    private void LondonLabel_MouseLeave(object sender, MouseEventArgs e)
-    {
-        LondonLabel.Foreground = Brushes.Black;
-    }
-    private void AhenLabel_MouseEnter(object sender, MouseEventArgs e)
-    {
-        AhenLabel.Foreground = Brushes.Red;
-    }
-    private void AhenLabel_MouseLeave(object sender, MouseEventArgs e)
-    {
-        AhenLabel.Foreground = Brushes.Black;
-    }
-    private void RomeLabel_MouseEnter(object sender, MouseEventArgs e)
-    {
-        RomeLabel.Foreground = Brushes.Red;
-    }
-    private void RomeLabel_MouseLeave(object sender, MouseEventArgs e)
-    {
-        RomeLabel.Foreground = Brushes.Black;
-    }
-    private void ConstantinopleLabel_MouseEnter(object sender, MouseEventArgs e)
-    {
-        ConstantinopleLabel.Foreground = Brushes.Red;
-    }
-    private void ConstantinopleLabel_MouseLeave(object sender, MouseEventArgs e)
-    {
-        ConstantinopleLabel.Foreground = Brushes.Black;
-    }
-    private void DamascusLabel_MouseEnter(object sender, MouseEventArgs e)
-    {
-        DamascusLabel.Foreground = Brushes.Red;
-    }
-    private void DamascusLabel_MouseLeave(object sender, MouseEventArgs e)
-    {
-        DamascusLabel.Foreground = Brushes.Black;
-    }
-    private void GridEditAccountBooking_MouseEnter(object sender, MouseEventArgs e)
-    {
-        EditAccountLabelBooking.Foreground = Brushes.Red;
-    }
-    private void GridEditAccountBooking_MouseLeave(object sender, MouseEventArgs e)
-    {
-        EditAccountLabelBooking.Foreground = Brushes.Black;
-    }
-    private void GridHelpBooking_MouseEnter(object sender, MouseEventArgs e)
-    {
-        HelpLabelBooking.Foreground = Brushes.Red;
-    }
-    private void GridHelpBooking_MouseLeave(object sender, MouseEventArgs e)
-    {
-        HelpLabelBooking.Foreground = Brushes.Black;
-    }
-
 
     // - - - Mouse enter leave reactions yellow - white - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    private void GridExitToAccountEdit_MouseEnter(object sender, MouseEventArgs e)
+    private void LabelYellow_MouseEnter(object sender, MouseEventArgs e)
     {
-        ExitLabelAccountEdit.Foreground = Brushes.Yellow;
+        if (sender is Label)
+        {
+            Label someLabel = sender as Label ?? throw new NullReferenceException();
+            someLabel.Foreground = Brushes.Yellow;
+        }
     }
-
-    private void GridExitToAccountEdit_MouseLeave(object sender, MouseEventArgs e)
+    private void LabelWhite_MouseLeave(object sender, MouseEventArgs e)
     {
-        ExitLabelAccountEdit.Foreground = Brushes.White;
-    }
-
-    private void GridSaveAccountEdit_MouseEnter(object sender, MouseEventArgs e)
-    {
-        SaveLabelAccountEdit.Foreground = Brushes.Yellow;
-    }
-    private void GridSaveAccountEdit_MouseLeave(object sender, MouseEventArgs e)
-    {
-        SaveLabelAccountEdit.Foreground = Brushes.White;
-    }
-    private void GridTicketsAccountEdit_MouseEnter(object sender, MouseEventArgs e)
-    {
-        TicketsLabelAccountEdit.Foreground = Brushes.Yellow;
-    }
-    private void GridTicketsAccountEdit_MouseLeave(object sender, MouseEventArgs e)
-    {
-        TicketsLabelAccountEdit.Foreground = Brushes.White;
-    }
-    private void GridDeleteAccountEdit_MouseEnter(object sender, MouseEventArgs e)
-    {
-        DeleteLabelAccountEdit.Foreground = Brushes.Yellow;
-    }
-    private void GridDeleteAccountEdit_MouseLeave(object sender, MouseEventArgs e)
-    {
-        DeleteLabelAccountEdit.Foreground = Brushes.White;
-    }
-    private void GridHelpAccountEdit_MouseEnter(object sender, MouseEventArgs e)
-    {
-        HelpLabelAccountEdit.Foreground = Brushes.Yellow;
-    }
-    private void GridHelpAccountEdit_MouseLeave(object sender, MouseEventArgs e)
-    {
-        HelpLabelAccountEdit.Foreground = Brushes.White;
+        if (sender is Label)
+        {
+            Label someLabel = sender as Label ?? throw new NullReferenceException();
+            someLabel.Foreground = Brushes.White;
+        }
     }
 
     // - - - Other - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
